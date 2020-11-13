@@ -7,6 +7,7 @@ function createToDo(req, data) {
     id = data.id;
 
   return {
+    id: data.id,
     title: data.title,
     order: data.order,
     deadline: data.deadline,
@@ -26,7 +27,7 @@ async function getTodo(req, res) {
 }
 
 async function postTodo(req, res) {
-  const created = await todos.create(req.body.title, req.body.order);
+  const created = await todos.create(req.body.title, req.body.deadline);
   return res.send(createToDo(req, created));
 }
 
